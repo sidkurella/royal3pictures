@@ -141,10 +141,14 @@ if __name__ == '__main__':
         default=1_000_000,
         help="Number of runs to simulate",
     )
-    parser.add_argument('--bankroll', type=int, default=1_000_000_000, help="Initial bankroll size")
+    parser.add_argument('--bankroll', type=int, default=None, help="Initial bankroll size")
     parser.add_argument('--wager', type=int, default=1, help="Wager size")
 
     args = parser.parse_args()
+
+    if args.bankroll is None:
+        args.bankroll = args.runs
+
     print(f"Runs: {args.runs}\tBankroll: {args.bankroll}\tWager: {args.wager}")
     print("Running simulation...")
 
